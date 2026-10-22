@@ -61,16 +61,27 @@ pads swap characters every two seconds.
 
 ## Known issues
 
-- **Left stick can go wrong after a ladder.** After a player climbs a ladder, that player's
-  left stick can move the character in a rotated direction (for example, "up" walks left).
-  Movement is camera-relative and the game does not refresh the movement basis for the
-  second player after the climb. Restarting the level clears it. Reported, not fixed yet.
-- **Recolouring player 2's raincoat is not implemented.** The material has no colour
-  parameter and a texture swap reads back but renders unchanged.
-- **The game picks the pad for player 1.** If the two pads reconnect in the other order, the
-  players swap pads. Relaunching the game is the current workaround.
-- The mod is a prototype: co-op is only tested in windowed mode and on the builds listed
-  above.
+Reported by players, roughly in the order they are hit:
+
+1. **Running on diagonal ladders breaks the left stick.** Sprinting up a diagonal ladder can
+   leave that player's movement rotated (for example, the stick pushed right walks up).
+   Walking the same ladder is fine. Restarting the level clears it. Not fixed yet.
+2. **Crash when both players grab the same hook.** In the hook sequences (the Chef escape)
+   the game can crash when both players hook onto the same object. Workaround: each player
+   takes a different hook, the sequence can then be finished.
+3. **A door blocks the view of the first lever.** In the opening area with the lever and the
+   grate, the door in front of the lever hides it on one of the screens; the lever can still
+   be flipped blind.
+4. **Closing doors and lifts can leave player 2 behind.** Both players have to go through at
+   the same time, otherwise the second character stays outside.
+5. **Turning co-op off leaves player 2 in the level.** The view goes back to a single window,
+   but the second character is still there.
+6. **Recolouring player 2's raincoat is not implemented.** The material has no colour
+   parameter and a texture swap reads back but renders unchanged.
+7. **The game picks the pad for player 1.** If the two pads reconnect in the other order, the
+   players swap pads. Relaunching the game is the current workaround.
+8. The mod is a prototype: co-op is only tested in windowed mode and on the builds listed
+   above.
 
 ## Tested on
 
@@ -108,7 +119,17 @@ needed to play and are documented in the script itself.
 `...\ue4ss\Mods\mods.txt`. Запустите игру: в главном меню появится строка
 «Совместная игра: включена», кооп включён по умолчанию.
 
-**Известные проблемы.** После подъёма по лестнице у поднявшегося игрока левый стик может
-двигать персонажа не в ту сторону — помогает перезапуск уровня, причина пока не исправлена.
-Перекраска плаща второго игрока не реализована. Если геймпады переподключить в другом
-порядке, игроки могут поменяться местами — перезапустите игру.
+**Известные проблемы.**
+
+1. Бег по диагональным лестницам ломает левый стик: направление движения поворачивается
+   (стик вправо — персонаж идёт вверх). Пешком по той же лестнице всё нормально; помогает
+   перезапуск уровня. Не исправлено.
+2. Краш, если оба игрока цепляются за один и тот же крюк (погоня от Поваров). Обходится так:
+   каждый цепляется за свой крюк, и момент проходится.
+3. В начале, у рубильника за решёткой, дверь закрывает обзор на одном из экранов; рубильник
+   можно включить вслепую.
+4. Закрывающиеся двери и лифты: заходите одновременно, иначе второй игрок остаётся снаружи.
+5. Если выключить совместную игру, остаётся одно окно, но второй персонаж в уровне остаётся.
+6. Перекраска плаща второго игрока не реализована.
+7. Геймпад для первого игрока выбирает игра: если переподключить геймпады в другом порядке,
+   игроки меняются местами — перезапустите игру.
