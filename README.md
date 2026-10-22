@@ -31,20 +31,77 @@ screen, two gamepads, no networking involved.
 
 ## Install
 
-1. Install UE4SS into the game, for Little Nightmares that is
-   `<game>\Atlas\Binaries\Win64\ue4ss` (UE4SS' own instructions: copy `dwmapi.dll`,
-   `UE4SS.dll` and the `ue4ss` folder next to `Atlas-Win64-Shipping.exe`).
-2. Copy the `AtlasCoop` folder from this repo into `<game>\Atlas\Binaries\Win64\ue4ss\Mods\`.
-3. Open `<game>\Atlas\Binaries\Win64\ue4ss\Mods\mods.txt` and add this line:
+Two things get installed: **UE4SS** (the Lua mod loader) and **the mod** itself.
+
+### 1. UE4SS
+
+1. Download the **experimental** build of UE4SS from
+   [its releases page](https://github.com/UE4SS-RE/RE-UE4SS/releases) (the ordinary
+   `UE4SS_v3.0.1-...zip`, not the `zDEV` one). The stable 3.0.1 release does not work with
+   this mod; the tested build is `v3.0.1-1181-g83330635`.
+2. Open the folder that contains `Atlas-Win64-Shipping.exe` — for Little Nightmares that is
+   `<game>\Atlas\Binaries\Win64\`.
+3. From the zip copy into that folder:
+   - `dwmapi.dll`
+   - `UE4SS.dll`
+   - the whole `ue4ss` folder
+
+   The result must look like this:
+
+   ```
+   Atlas\Binaries\Win64\
+     Atlas-Win64-Shipping.exe
+     dwmapi.dll                  <- UE4SS loader
+     ue4ss\
+       UE4SS.dll
+       UE4SS-settings.ini
+       Mods\
+         mods.txt
+   ```
+
+4. Start the game once and close it. If UE4SS is in place it creates
+   `Atlas\Binaries\Win64\ue4ss\UE4SS.log`.
+
+### 2. The mod
+
+1. Download this repository: **Code → Download ZIP**, then unpack it.
+2. Copy the `AtlasCoop` folder (the one that contains `Scripts\main.lua`) into
+   `<game>\Atlas\Binaries\Win64\ue4ss\Mods\`.
+3. Open `<game>\Atlas\Binaries\Win64\ue4ss\Mods\mods.txt` in a text editor and add this line
+   at the end:
 
    ```
    AtlasCoop : 1
    ```
 
-4. Launch the game. The main menu gets an extra row: «Совместная игра: включена».
-   Co-op is created while the menu is up, so both characters spawn when the level starts.
+   The file is a plain list of `name : 0/1` lines; `1` enables a mod, `0` disables it.
+4. Start the game. The main menu gains a row: «Совместная игра: включена»
+   (or `Coop Game: On` if the game UI is not Russian). Co-op is already on, and both
+   characters spawn when the level starts.
 
-To uninstall, set the mods.txt line to `AtlasCoop : 0` (or delete the folder).
+### First launch checklist
+
+- Both gamepads connected **before** the game starts.
+- Windowed mode (the tested setup is a 1280×720 client).
+- The menu row exists and says «включена».
+- After the level starts the screen is split in two and each character answers to its own
+  pad.
+
+### Uninstall
+
+Set `AtlasCoop : 0` in `mods.txt` (or delete the `Mods\AtlasCoop` folder). To remove UE4SS
+completely, delete `dwmapi.dll`, `UE4SS.dll` and the `ue4ss` folder.
+
+### If something does not work
+
+| Symptom | What to check |
+|---|---|
+| No extra row in the menu | `AtlasCoop : 1` is in `Mods\mods.txt`; open `ue4ss\UE4SS.log` and look for `Error loading script`. |
+| `Error loading script` in the log | Wrong UE4SS build: install the experimental one, not stable 3.0.1. |
+| No split screen | The row says «отключена»: press it once. |
+| Only one character moves | Both pads connected before launch; if not, relaunch the game. |
+| Players control the wrong characters | The game handed the pads out in the other order: relaunch (see Known issues). |
+| The game does not start at all | Delete `dwmapi.dll` and the `ue4ss` folder to check the game alone; make sure no other mod loader is installed. |
 
 ## How it works (short version)
 
@@ -119,10 +176,22 @@ If you like the mod and want to say thanks:
 Кооператив на одном ПК для **Little Nightmares Enhanced Edition**: два игрока, разделённый
 экран, два геймпада, без сети.
 
-**Установка.** Поставьте UE4SS в `<игра>\Atlas\Binaries\Win64\ue4ss`, скопируйте папку
-`AtlasCoop` в `...\ue4ss\Mods\` и добавьте строку `AtlasCoop : 1` в
-`...\ue4ss\Mods\mods.txt`. Запустите игру: в главном меню появится строка
-«Совместная игра: включена», кооп включён по умолчанию.
+**Установка.**
+
+1. Скачайте **experimental**-сборку UE4SS со
+   [страницы релизов](https://github.com/UE4SS-RE/RE-UE4SS/releases) (обычный zip,
+   не `zDEV`). Стабильная 3.0.1 не подходит.
+2. Скопируйте из архива `dwmapi.dll`, `UE4SS.dll` и папку `ue4ss` в
+   `<игра>\Atlas\Binaries\Win64\` — туда, где лежит `Atlas-Win64-Shipping.exe`.
+3. Запустите игру один раз и закройте: если появился `ue4ss\UE4SS.log`, загрузчик встал.
+4. Скачайте этот репозиторий (Code → Download ZIP) и скопируйте папку `AtlasCoop` в
+   `<игра>\Atlas\Binaries\Win64\ue4ss\Mods\`.
+5. В `...\ue4ss\Mods\mods.txt` добавьте строку `AtlasCoop : 1`.
+6. Запустите игру: в главном меню появится строка «Совместная игра: включена», кооп уже
+   включён.
+
+Подключайте оба геймпада до запуска игры. Если строки в меню нет — смотрите
+`ue4ss\UE4SS.log` (чаще всего стоит стабильная UE4SS вместо experimental).
 
 **Известные проблемы.**
 
