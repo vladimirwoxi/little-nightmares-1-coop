@@ -107,6 +107,11 @@ needed to play and are documented in the script itself.
 - This is a single-player game; the mod does not touch any online service or anti-cheat.
 - License: see [LICENSE](LICENSE).
 
+## Support the mod
+
+If you like the mod and want to say thanks:
+**[donationalerts.com/r/woxi](https://www.donationalerts.com/r/woxi)**
+
 ---
 
 ## По-русски
@@ -133,3 +138,6 @@ needed to play and are documented in the script itself.
 6. Перекраска плаща второго игрока не реализована.
 7. Геймпад для первого игрока выбирает игра: если переподключить геймпады в другом порядке,
    игроки меняются местами — перезапустите игру.
+
+**Поддержать мод.** Если хочется отблагодарить:
+[donationalerts.com/r/woxi](https://www.donationalerts.com/r/woxi)
