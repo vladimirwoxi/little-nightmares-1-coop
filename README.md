@@ -1,4 +1,4 @@
-# AtlasCoop — split-screen co-op for Little Nightmares (2017)
+# Little Nightmares Coop — split-screen co-op for Little Nightmares (2017)
 
 Same-PC couch co-op for **Little Nightmares Enhanced Edition**: two local players, split
 screen, two gamepads, no networking involved.
