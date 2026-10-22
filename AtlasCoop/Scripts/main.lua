@@ -2269,7 +2269,7 @@ end
 -- Note: no keyboard hotkey. RegisterKeyBind(Key.F2) fired continuously in this build (the key
 -- state reads as held), which toggled co-op on/off every tick. The menu row is the control.
 
-log("loaded (v0.11) io=%s", type(io))
+log("loaded (v0.7) io=%s", type(io))
 LoopAsync(400, function()
     local ok, err = pcall(tick)
     if not ok then log("TICK ERROR: %s", tostring(err)) end
